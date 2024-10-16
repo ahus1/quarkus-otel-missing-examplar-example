@@ -2,6 +2,11 @@
 
 This is to show-case that HTTP metrics don't show exemplars.
 
+This accompanies the following GitHub issue: 
+
+* https://github.com/quarkusio/quarkus/issues/43845
+* https://github.com/eclipse-vertx/vert.x/pull/5356
+
 ```
 # build JAR
 ./mvnw package
