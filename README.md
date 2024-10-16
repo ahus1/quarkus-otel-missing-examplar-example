@@ -25,6 +25,8 @@ Expected output:
 http_server_requests_seconds_count{method="GET",outcome="SUCCESS",status="200",uri="root"} 1.0 # {span_id="a423857f2c2564f6",trace_id="a4d9bca798183c42aff30d54691df2ff"} 1.0 1729084389.503
 ```
 
+NOTE: There is a partially patched `Http1xServerConnection.txt` file that can be renamed to `Http1xServerConnection.java` to try out the fix locally.
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
