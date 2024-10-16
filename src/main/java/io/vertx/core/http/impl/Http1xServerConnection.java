@@ -290,13 +290,15 @@ public class Http1xServerConnection extends Http1xConnectionBase<ServerWebSocket
   private void reportResponseComplete() {
     Http1xServerRequest request = responseInProgress;
     if (metrics != null) {
-      flushBytesWritten();
-      if (requestFailed) {
-        metrics.requestReset(request.metric());
-        requestFailed = false;
-      } else {
-        metrics.responseEnd(request.metric(), request.response(), request.response().bytesWritten());
-      }
+      request.context.dispatch(event -> {
+        flushBytesWritten();
+        if (requestFailed) {
+          metrics.requestReset(request.metric());
+          requestFailed = false;
+        } else {
+          metrics.responseEnd(request.metric(), request.response(), request.response().bytesWritten());
+        }
+      });
     }
     VertxTracer tracer = context.tracer();
     Object trace = request.trace();
